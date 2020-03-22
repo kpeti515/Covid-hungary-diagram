@@ -6,6 +6,11 @@ const opts = {
   useUnifiedTopology: true
 }
 
+if (!connectionURL) {
+  console.error('[EnvVar] `DB_URL` is missing')
+  process.exit(1)
+}
+
 const connect = async () => {
   const conn = await mongoose.connect(connectionURL, opts)
   console.info('Database connection established')
