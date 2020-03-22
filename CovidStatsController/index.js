@@ -1,13 +1,13 @@
 const moment = require('moment')
 
+const Scraper = require('../scraper')
 const config = require('../config')
 const CovidStats = require('./model')
 
-const hasScrapeForDate = async (date) => {
+const statsForDate = async (date) => {
   const todayString = moment(date).format(config.dateFormat)
   const instance = await CovidStats.findOne({ scraped_at: todayString })
-
-  return instance != null
+  return instance
 }
 
 const store = async (data) => {
@@ -15,7 +15,20 @@ const store = async (data) => {
   return doc
 }
 
+const generateCovidStatsIfNeeded = async () => {
+  const covidStatsForToday = await statsForDate(new Date())
+  if (covidStatsForToday) {
+    const msg = 'CovidStats already stored for today'
+    return { msg, data: covidStatsForToday }
+  }
+
+  const data = await Scraper.scrape()
+  await store(data)
+  const msg = 'CovidStats saved'
+  return { msg, data }
+}
+
 module.exports = {
-  hasScrapeForDate,
-  store
+  generateCovidStatsIfNeeded,
+  statsForDate
 }
