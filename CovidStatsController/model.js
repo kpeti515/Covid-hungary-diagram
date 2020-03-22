@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
   gyógyult: { type: Number },
   karanténban: { type: Number },
   last_updated_at: { type: String },
-  mintavétel: { type: Number, unique: true },
+  mintavétel: { type: Number },
   scraped_at: { type: String, unique: true }
 })
 const CovidStats = mongoose.model('CovidStats', schema)
