@@ -2,10 +2,10 @@
   "name": "covid19daybyday",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "dev": "nodemon .",
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
