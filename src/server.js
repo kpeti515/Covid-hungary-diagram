@@ -2,10 +2,10 @@ const puppeteer = require('puppeteer')
 const express = require('express')
 const app = express()
 require('..db/mongoose')
-const routes = require('routes')
+const router = require('router')
 
 const port = process.env.PORT || 3000
-
+app.use(router)
 app.listen(port, () => {
   console.log('Server is up on port ' + port)
 })
