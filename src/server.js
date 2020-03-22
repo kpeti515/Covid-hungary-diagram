@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer')
 const express = require('express')
 const app = express()
-require('..db/mongoose')
-const router = require('router')
+// require('../db/mongoose')
+const router = require('./router')
 
 const port = process.env.PORT || 3000
 app.use(router)
