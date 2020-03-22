@@ -1,1 +1,22 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# Dependency directories
 node_modules/
+jspm_packages/
+
+# Desktop Services Store (OS X hidden file)
+.DS_Store
+
+# Visual Studio Code configs
+.vscode
+
+# dotenv environment variables file
+.env
