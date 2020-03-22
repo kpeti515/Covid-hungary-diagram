@@ -23,6 +23,11 @@ const generateCovidStatsIfNeeded = async () => {
   }
 
   const data = await Scraper.scrape()
+  if (moment(data.last_updated_at).isSame(moment(), 'year', 'month', 'day')) {
+    const msg = 'There are no recent updates available for today'
+    return { msg, data: null }
+  }
+
   await store(data)
   const msg = 'CovidStats saved'
   return { msg, data }
